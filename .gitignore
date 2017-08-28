@@ -40,6 +40,20 @@ captures/
 .idea/dictionaries
 .idea/libraries
 
+# Signing files
+.signing/
+
+# User-specific configurations
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/runConfigurations.xml
+.idea/vcs.xml
+
 # Keystore files
 *.jks
 
