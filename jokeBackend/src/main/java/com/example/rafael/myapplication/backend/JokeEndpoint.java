@@ -23,12 +23,12 @@ import com.google.api.server.spi.config.ApiNamespace;
                 packagePath = ""
         )
 )
-public class MyEndpoint {
+public class JokeEndpoint {
 
     @ApiMethod(name = "tellJoke")
-    public MyBean tellJoke() {
-        MyBean response = new MyBean();
-        response.setData(JokesProvider.getJoke());
+    public Joke tellJoke() {
+        Joke response = new Joke();
+        response.setJoke(JokesProvider.getJoke());
 
         return response;
     }

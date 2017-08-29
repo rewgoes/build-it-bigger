@@ -47,7 +47,7 @@ public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
         }
 
         try {
-            return jokeService.tellJoke().execute().getData();
+            return jokeService.tellJoke().execute().getJoke();
         } catch (IOException e) {
             return e.getMessage();
         }
