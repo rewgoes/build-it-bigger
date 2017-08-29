@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello, Endpoints!</title>
+    <title>Joke, Endpoints!</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet"
           href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
@@ -12,7 +12,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Hello, Endpoints!</a>
+            <a class="navbar-brand" href="#">Joke, Endpoints!</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -50,16 +50,13 @@
     <div class="jumbotron">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Hello, Endpoints!</h1>
-                <p>Enter your name and press the button below to call your Google Cloud Endpoints
-                    API.</p>
+                <h1>Joke, Endpoints!</h1>
+                <p>Press below button to call your Google Cloud Endpoints API and hear a joke.</p>
                 <form>
                     <div class="input-group">
-                        <input type="text" class="form-control input-lg" placeholder="Name"
-                               id="nameInput"/>
                         <span class="input-group-btn">
                              <button class="btn btn-default btn-primary btn-group btn-lg"
-                                     type="submit" id="helloButton">Say "Hello" &raquo;</button>
+                                     type="submit" id="helloButton">Tell me a joke &raquo;</button>
                           </span>
                     </div>
                 </form>
@@ -89,15 +86,14 @@
     // A function that attaches a "Say Hello" button click handler
     function enableClick() {
       document.getElementById('helloButton').onclick = function() {
-        var name = document.getElementById('nameInput').value;
-        gapi.client.myApi.sayHi({'name': name}).execute(
+        gapi.client.jokeApi.tellJoke().execute(
           function(response) {
             var outputAlertDiv = document.getElementById('outputAlert');
             outputAlertDiv.style.visibility = 'visible';
 
             if (!response.error) {
               outputAlertDiv.className = 'alert alert-success';
-              outputAlertDiv.innerHTML = '<h2>' + response.result.data + '</h2>';
+              outputAlertDiv.innerHTML = '<h2>' + response.result.joke + '</h2>';
             }
             else if (response.error) {
               outputAlertDiv.className = 'alert alert-danger';
@@ -110,7 +106,7 @@
     }
     // This is called initially
     function init() {
-      var apiName = 'myApi';
+      var apiName = 'jokeApi';
       var apiVersion = 'v1';
       var apiRoot = 'https://' + window.location.host + '/_ah/api';
       if (window.location.hostname == 'localhost'
