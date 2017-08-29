@@ -11,9 +11,9 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
-public class JokeFetchAsyncTask extends AsyncTask<Void, Void, String> {
+public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
 
-    private static final String LOG_TAG = JokeFetchAsyncTask.class.getSimpleName();
+    private static final String LOG_TAG = FetchJokeAsyncTask.class.getSimpleName();
 
     private OnResponseListener mListener;
     private JokeApi jokeService = null;
@@ -22,7 +22,7 @@ public class JokeFetchAsyncTask extends AsyncTask<Void, Void, String> {
         void onResponse(String response);
     }
 
-    public JokeFetchAsyncTask(OnResponseListener listener) {
+    public FetchJokeAsyncTask(OnResponseListener listener) {
         mListener = listener;
     }
 

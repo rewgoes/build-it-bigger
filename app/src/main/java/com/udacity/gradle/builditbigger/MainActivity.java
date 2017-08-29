@@ -13,7 +13,7 @@ import com.google.android.gms.ads.AdView;
 import wolfgoes.com.jokedisplayer.ui.JokeActivity;
 import wolfgoes.com.jokedisplayer.utils.Constants;
 
-public class MainActivity extends AppCompatActivity implements JokeFetchAsyncTask.OnResponseListener {
+public class MainActivity extends AppCompatActivity implements FetchJokeAsyncTask.OnResponseListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements JokeFetchAsyncTas
     }
 
     public void tellJoke(View view) {
-        new JokeFetchAsyncTask(this).execute();
+        new FetchJokeAsyncTask(this).execute();
     }
 
     @Override
