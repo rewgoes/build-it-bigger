@@ -13,7 +13,7 @@ import wolfgoes.com.jokedisplayer.utils.Constants;
 
 public class BaseMainActivity extends AppCompatActivity implements FetchJokeAsyncTask.OnResponseListener {
 
-    private ProgressBar mProgressBar;
+    protected ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
