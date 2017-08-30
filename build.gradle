@@ -17,3 +17,37 @@ allprojects {
         jcenter()
     }
 }
+
+task runLocalTests {
+    dependsOn = ['startServer', 'runTests']
+}
+
+task startServer {
+    dependsOn ':jokeBackend:appengineRun'
+    project(":jokeBackend").afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+    doLast {
+        println "Server started"
+    }
+}
+
+task runTests {
+    dependsOn 'startServer'
+    mustRunAfter 'startServer'
+    dependsOn ':app:connectedCheck'
+    doLast {
+        println "Test finished"
+    }
+}
+
+task stopServer {
+    dependsOn 'runTests'
+    mustRunAfter 'runTests'
+    dependsOn ':jokeBackend:appengineStop'
+    doLast {
+        println "Server stopped"
+    }
+}
+
+startServer.finalizedBy(stopServer)
