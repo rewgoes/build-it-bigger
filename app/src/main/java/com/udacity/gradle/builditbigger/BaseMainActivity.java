@@ -6,16 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import wolfgoes.com.jokedisplayer.ui.JokeActivity;
 import wolfgoes.com.jokedisplayer.utils.Constants;
 
 public class BaseMainActivity extends AppCompatActivity implements FetchJokeAsyncTask.OnResponseListener {
 
+    private ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
     @Override
@@ -41,11 +45,13 @@ public class BaseMainActivity extends AppCompatActivity implements FetchJokeAsyn
     }
 
     public void tellJoke(View view) {
+        mProgressBar.setVisibility(View.VISIBLE);
         new FetchJokeAsyncTask(this).execute();
     }
 
     @Override
     public void onResponse(String response) {
+        mProgressBar.setVisibility(View.GONE);
         Intent intent = new Intent(this, JokeActivity.class);
         intent.putExtra(Constants.EXTRA_JOKE, response);
         startActivity(intent);
